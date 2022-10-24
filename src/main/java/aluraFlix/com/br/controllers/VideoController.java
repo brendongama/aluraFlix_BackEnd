@@ -3,6 +3,8 @@ package aluraFlix.com.br.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +47,7 @@ public class VideoController {
 	}
 	
 	@PostMapping
-	private ResponseEntity<Video> getOneVideo(@RequestBody Video video) {
+	private ResponseEntity<Video> getOneVideo(@Valid @RequestBody Video video) {
 	Video newVideo = service.saveVideo(video);
 		return ResponseEntity.status(HttpStatus.CREATED).body(newVideo);
 	}
